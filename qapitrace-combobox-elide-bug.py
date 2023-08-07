@@ -1,4 +1,5 @@
 import os
+from os.path import abspath, dirname
 try:
     from PySide6.QtCore import Qt, QSize, QPoint, QCoreApplication, QFile
     from PySide6.QtWidgets import QApplication, QDialog, QComboBox, QLayout
@@ -113,7 +114,7 @@ def retracerDlg():
 
 def retracerDlgFromUiFile():
     loader = QUiLoader()
-    file = QFile(f"{os.path.dirname(__file__)}/retracerdialog.ui")
+    file = QFile(f"{abspath(dirname(__file__))}/retracerdialog.ui")
     file.open(QFile.ReadOnly)
     dlg = loader.load(file)
     file.close()
